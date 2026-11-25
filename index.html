@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#07080a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Keylogger Checking">
+    <title>KEYLOGGER CHECKING - By Elz</title>
+
+    <!-- PWA MANIFEST & SLOT IKON APLIKASI (ikon.png) -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="ikon.png">
+    <link rel="apple-touch-icon" href="ikon.png">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
+    <div id="homeBgLayer" class="home-bg-layer"></div>
+
+    <!-- TOP BAR GLOBAL -->
+    <header class="global-header">
+        <div class="header-left">
+            <button type="button" id="backHomeBtn" class="btn-back hidden">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <line x1="19" y1="12" x2="5" y2="12"/>
+                    <polyline points="12 19 5 12 12 5"/>
+                </svg>
+                <span data-i18n="nav_back">BERANDA</span>
+            </button>
+        </div>
+
+        <div class="header-right">
+            <button type="button" id="installAppBtn" class="btn-install-app" title="Pasang ke Layar Ponsel">
+                <img src="ikon.png" alt="Ikon App" class="install-btn-icon" onerror="this.style.display='none';">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="7 10 12 15 17 10"/>
+                    <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                <span data-i18n="btn_install">INSTALL APP</span>
+            </button>
+
+            <div class="lang-switch" role="group" aria-label="Language Switcher">
+                <button type="button" id="btnLangID" class="lang-btn active">ID</button>
+                <button type="button" id="btnLangEN" class="lang-btn">EN</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==========================================
+         HALAMAN 1: BERANDA UTAMA (HOME)
+    =========================================== -->
+    <main id="pageHome" class="container page-active">
+        <header class="hero-header">
+            <div id="secretBadgeTrigger" class="cyber-badge" role="button" tabindex="0">
+                <span class="pulse-dot"></span>
+                <span data-i18n="hero_badge">SAMP MOBILE SECURITY SYSTEM</span>
+            </div>
+
+            <div class="shield-logo">
+                <img src="logo-samp.png" alt="Logo San Andreas Multiplayer" class="custom-samp-logo">
+            </div>
+
+            <h1 class="hero-title">KEYLOGGER CHECKING</h1>
+            <p class="hero-sub">By Elz</p>
+            <p class="hero-desc" data-i18n="hero_desc">
+                Sistem pemindai forensik statis & bytecode tingkat lanjut untuk melindungi akun SA-MP Mobile Anda dari script pencuri password, webhook stealer, dan malware tersembunyi.
+            </p>
+        </header>
+
+        <section class="menu-grid">
+            <div id="btnGoCheck" class="menu-card" role="button" tabindex="0">
+                <div class="menu-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                        <circle cx="11.5" cy="14.5" r="2.5"/>
+                        <line x1="13.5" y1="16.5" x2="16" y2="19"/>
+                    </svg>
+                </div>
+                <div class="menu-content">
+                    <span class="menu-tag" data-i18n="menu1_tag">CORE ENGINE v3.5</span>
+                    <h2 class="menu-title" data-i18n="menu1_title">Check File Samp</h2>
+                    <p class="menu-desc" data-i18n="menu1_desc">Analisis mendalam file MonetLoader (.lua / .luac) dan CLEO Mobile (.cs / .csa / .csi) secara lokal & instan.</p>
+                </div>
+                <div class="menu-arrow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                        <polyline points="9 18 15 12 9 6"/>
+                    </svg>
+                </div>
+            </div>
+
+            <div id="btnGoGuide" class="menu-card" role="button" tabindex="0">
+                <div class="menu-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                    </svg>
+                </div>
+                <div class="menu-content">
+                    <span class="menu-tag" data-i18n="menu2_tag">USER TUTORIAL & STEPS</span>
+                    <h2 class="menu-title" data-i18n="menu2_title">Panduan Keylogger Check File</h2>
+                    <p class="menu-desc" data-i18n="menu2_desc">Tutorial lengkap langkah demi langkah cara menggunakan fitur Check File Samp beserta panduan gambar.</p>
+                </div>
+                <div class="menu-arrow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                        <polyline points="9 18 15 12 9 6"/>
+                    </svg>
+                </div>
+            </div>
+
+            <div id="btnGoWiki" class="menu-card" role="button" tabindex="0">
+                <div class="menu-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        <line x1="12" y1="8" x2="12" y2="12"/>
+                        <line x1="12" y1="16" x2="12.01" y2="16"/>
+                    </svg>
+                </div>
+                <div class="menu-content">
+                    <span class="menu-tag" data-i18n="menu_wiki_tag">CYBERSECURITY EDUCATION</span>
+                    <h2 class="menu-title" data-i18n="menu_wiki_title">Pengertian Keylogger</h2>
+                    <p class="menu-desc" data-i18n="menu_wiki_desc">Pelajari apa itu keylogger, bagaimana cara kerjanya mencuri akun SAMP, serta cara mencegahnya.</p>
+                </div>
+                <div class="menu-arrow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                        <polyline points="9 18 15 12 9 6"/>
+                    </svg>
+                </div>
+            </div>
+
+            <div id="btnGoSupport" class="menu-card" role="button" tabindex="0">
+                <div class="menu-icon support-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                    </svg>
+                </div>
+                <div class="menu-content">
+                    <span class="menu-tag support-tag" data-i18n="menu3_tag">DONASI & KONTRIBUSI</span>
+                    <h2 class="menu-title" data-i18n="menu3_title">Support Devloper</h2>
+                    <p class="menu-desc" data-i18n="menu3_desc">Dukung Elz untuk terus mengembangkan database deteksi keylogger terbaru dan pembaruan fitur gratis.</p>
+                </div>
+                <div class="menu-arrow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                        <polyline points="9 18 15 12 9 6"/>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <section class="home-stats">
+            <div class="stat-pill">
+                <span class="stat-num">100%</span>
+                <span class="stat-lbl" data-i18n="stat1_lbl">Analisis Lokal Aman</span>
+            </div>
+            <div class="stat-pill">
+                <span class="stat-num">LUA & CLEO</span>
+                <span class="stat-lbl" data-i18n="stat2_lbl">Support Bytecode</span>
+            </div>
+            <div class="stat-pill">
+                <span class="stat-num">ANTI-HOOK</span>
+                <span class="stat-lbl" data-i18n="stat3_lbl">Deteksi Webhook</span>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==========================================
+         HALAMAN 2: CHECK FILE SAMP
+    =========================================== -->
+    <main id="pageCheck" class="container hidden">
+        <header class="page-header">
+            <h1 class="main-title" data-i18n="check_page_title">CHECK FILE SAMP</h1>
+            <p class="sub-title" data-i18n="check_page_sub">MonetLoader & CLEO Mobile Forensics</p>
+        </header>
+
+        <div id="scannerWorkspace" class="scanner-workspace locked-blur">
+            <section class="scanner-card">
+                <div id="dropZone" class="drop-zone">
+                    <input type="file" id="fileInput" accept=".lua,.luac,.cs,.csa,.csi" hidden>
+                    <div class="upload-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="17 8 12 3 7 8"/>
+                            <line x1="12" y1="3" x2="12" y2="15"/>
+                        </svg>
+                    </div>
+                    <h2 class="drop-title" data-i18n="drop_title">Pilih atau Tarik File Script SAMP</h2>
+                    <p class="drop-desc" data-i18n="drop_desc">Hanya mendukung file mentah: <strong>.lua / .luac</strong> (MonetLoader) & <strong>.cs / .csa / .csi</strong> (CLEO)</p>
+                    <button type="button" id="selectBtn" class="btn-primary" data-i18n="btn_select">PILIH FILE SCRIPT</button>
+                </div>
+
+                <div id="scanProcess" class="scan-process hidden">
+                    <div class="file-meta">
+                        <div class="file-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                            </svg>
+                        </div>
+                        <div class="file-details">
+                            <span id="fileName" class="file-name">script.lua</span>
+                            <span id="fileSize" class="file-size">0 KB • LUA BYTECODE</span>
+                        </div>
+                        <button type="button" id="resetBtn" class="btn-reset" title="Ganti File">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="18" y1="6" x2="6" y2="18"/>
+                                <line x1="6" y1="6" x2="18" y2="18"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="progress-wrapper">
+                        <div class="progress-header">
+                            <span id="scanStatusText">Memindai struktur heksadesimal & opcode...</span>
+                            <span id="scanPercent">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div id="progressFill" class="progress-fill"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="resultSection" class="result-section hidden">
+                <div id="verdictCard" class="verdict-card">
+                    <div class="verdict-top">
+                        <div id="verdictIcon" class="verdict-icon"></div>
+                        <div class="verdict-info">
+                            <span class="verdict-label" data-i18n="verdict_label">HASIL ANALISIS KEAMANAN</span>
+                            <h3 id="verdictTitle" class="verdict-title">AMAN / BERSIH</h3>
+                        </div>
+                        <div class="risk-meter">
+                            <span class="risk-label">RISK SCORE</span>
+                            <span id="riskScore" class="risk-value">0%</span>
+                        </div>
+                    </div>
+                    <p id="verdictSummary" class="verdict-summary"></p>
+                </div>
+
+                <div class="metrics-grid">
+                    <div class="metric-box">
+                        <span class="metric-title" data-i18n="metric_net">Koneksi Jaringan</span>
+                        <span id="metricNetwork" class="metric-val safe">Tidak Ada</span>
+                    </div>
+                    <div class="metric-box">
+                        <span class="metric-title" data-i18n="metric_hook">Hook Dialog / Input</span>
+                        <span id="metricHook" class="metric-val safe">Normal</span>
+                    </div>
+                    <div class="metric-box">
+                        <span class="metric-title" data-i18n="metric_obf">Obfuscation / Encrypt</span>
+                        <span id="metricObf" class="metric-val safe">Terbuka</span>
+                    </div>
+                    <div class="metric-box">
+                        <span class="metric-title" data-i18n="metric_threat">Total Ancaman</span>
+                        <span id="metricThreats" class="metric-val safe">0 Temuan</span>
+                    </div>
+                </div>
+
+                <div class="details-card">
+                    <div class="details-header">
+                        <h4 data-i18n="findings_header">RINCIAN TEMUAN & LOG FORENSIK</h4>
+                        <span id="hashDisplay" class="hash-tag">SHA-256: -</span>
+                    </div>
+                    <div id="findingsList" class="findings-list"></div>
+                </div>
+
+                <div id="stringsCard" class="details-card hidden">
+                    <div class="details-header">
+                        <h4 data-i18n="strings_header">URL / WEBHOOK / STRING MENCURIGAKAN TERDETEKSI</h4>
+                    </div>
+                    <pre id="extractedStrings" class="code-box"></pre>
+                </div>
+            </section>
+        </div>
+
+        <div id="warningModal" class="modal-overlay hidden">
+            <div class="modal-box">
+                <button type="button" id="closeModalBtn" class="modal-close-x" title="Close">X</button>
+                <div class="modal-warn-icon">⚠️</div>
+                <h2 class="modal-title" data-i18n="modal_title">PENTING!! WAJIB DIBACA SEBELUM MENGGUNAKAN...</h2>
+                
+                <div class="modal-body">
+                    <p class="modal-highlight" data-i18n="modal_highlight">
+                        File yang di cek wajib berformat <strong>(.lua/.luac)</strong> Untuk Monetloader Dan <strong>(.Cs/.Csa/.Csi)</strong> Untuk Cleo). Tidak boleh menggunakan format <strong>(.Zip/7z.Raw/ dan lain lain)</strong>.
+                    </p>
+                    
+                    <div class="modal-rules">
+                        <div class="rule-item">
+                            <span class="rule-bullet">01</span>
+                            <p data-i18n="modal_rule1"><strong>Ekstrak File Terlebih Dahulu:</strong> Jika mod atau script yang Anda download masih terbungkus arsip (<code>.zip</code>, <code>.rar</code>, <code>.7z</code>), ekstrak terlebih dahulu menggunakan ZArchiver lalu unggah satu per satu file script aslinya.</p>
+                        </div>
+                        <div class="rule-item">
+                            <span class="rule-bullet">02</span>
+                            <p data-i18n="modal_rule2"><strong>Cek Seluruh File Pendukung:</strong> Pelaku keylogger sering menyisipkan pencuri akun di file library tambahan (misalnya file <code>.lua</code> kecil di dalam folder <code>lib</code>), bukan hanya di script utamanya.</p>
+                        </div>
+                        <div class="rule-item">
+                            <span class="rule-bullet">03</span>
+                            <p data-i18n="modal_rule3"><strong>100% Privasi Terjaga:</strong> Proses pemindaian berjalan langsung di perangkat Anda tanpa mengunggah file ke server mana pun.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer-note" data-i18n="modal_footer">
+                    Tekan tombol <strong>"X"</strong> di pojok kanan atas untuk menutup pesan ini dan membuka alat pemindai.
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ==========================================
+         HALAMAN 3: PANDUAN KEYLOGGER CHECK FILE (langkah1.jpg - langkah5.jpg)
+    =========================================== -->
+    <main id="pageGuide" class="container hidden">
+        <header class="page-header">
+            <h1 class="main-title" data-i18n="guide_page_title">PANDUAN KEYLOGGER CHECK FILE</h1>
+            <p class="sub-title" data-i18n="guide_page_sub">Cara Menggunakan Fitur Pemindai Script SAMP Dengan Benar</p>
+        </header>
+
+        <div class="guide-list">
+            <!-- LANGKAH 01 -->
+            <article class="guide-card">
+                <div class="guide-step-header">
+                    <span class="guide-badge">LANGKAH 01</span>
+                </div>
+                <div class="guide-photo-slot">
+                    <img src="langkah1.jpg" alt="Panduan Langkah 1" class="guide-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="photo-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <polyline points="21 15 16 10 5 21"/>
+                        </svg>
+                    </div>
+                </div>
+                <p class="guide-desc" data-i18n="guide_step1_desc">
+                    Tekan menu Check File samp pada halaman utama.
+                </p>
+            </article>
+
+            <!-- LANGKAH 02 -->
+            <article class="guide-card">
+                <div class="guide-step-header">
+                    <span class="guide-badge">LANGKAH 02</span>
+                </div>
+                <div class="guide-photo-slot">
+                    <img src="langkah2.jpg" alt="Panduan Langkah 2" class="guide-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="photo-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <polyline points="21 15 16 10 5 21"/>
+                        </svg>
+                    </div>
+                </div>
+                <p class="guide-desc" data-i18n="guide_step2_desc">
+                    Tekan Tombol ❌ Setelah membaca peraturan tentang format file.
+                </p>
+            </article>
+
+            <!-- LANGKAH 03 -->
+            <article class="guide-card">
+                <div class="guide-step-header">
+                    <span class="guide-badge">LANGKAH 03</span>
+                </div>
+                <div class="guide-photo-slot">
+                    <img src="langkah3.jpg" alt="Panduan Langkah 3" class="guide-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="photo-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <polyline points="21 15 16 10 5 21"/>
+                        </svg>
+                    </div>
+                </div>
+                <p class="guide-desc" data-i18n="guide_step3_desc">
+                    Tekan Pilih file Script.
+                </p>
+            </article>
+
+            <!-- LANGKAH 04 -->
+            <article class="guide-card guide-card-safe">
+                <div class="guide-step-header">
+                    <span class="guide-badge safe-badge">LANGKAH 04</span>
+                </div>
+                <div class="guide-photo-slot">
+                    <img src="langkah4.jpg" alt="Panduan Langkah 4" class="guide-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="photo-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <polyline points="21 15 16 10 5 21"/>
+                        </svg>
+                    </div>
+                </div>
+                <p class="guide-desc" data-i18n="guide_step4_desc">
+                    Jika muncul tulisan hijau yang menyatakan file tersebut aman, Berarti file tersebut dinyatakan aman dan tanpa keylogger.
+                </p>
+            </article>
+
+            <!-- LANGKAH 05 -->
+            <article class="guide-card guide-card-danger">
+                <div class="guide-step-header">
+                    <span class="guide-badge danger-badge">LANGKAH 05</span>
+                </div>
+                <div class="guide-photo-slot">
+                    <img src="langkah5.jpg" alt="Panduan Langkah 5" class="guide-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="photo-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <polyline points="21 15 16 10 5 21"/>
+                        </svg>
+                    </div>
+                </div>
+                <p class="guide-desc" data-i18n="guide_step5_desc">
+                    Jika muncul tulisan merah atau kuning yang menyatakan file tersebut berbahaya maka file tersebut mengandung keylogger dan dilarang keras untuk digunakan.
+                </p>
+            </article>
+        </div>
+    </main>
+
+    <!-- ==========================================
+         HALAMAN 4: PENGERTIAN KEYLOGGER
+    =========================================== -->
+    <main id="pageWiki" class="container hidden">
+        <header class="page-header">
+            <h1 class="main-title" data-i18n="wiki_page_title">PENGERTIAN KEYLOGGER</h1>
+            <p class="sub-title" data-i18n="wiki_page_sub">Edukasi Keamanan Akun SA-MP Mobile</p>
+        </header>
+
+        <section class="wiki-card">
+            <div class="wiki-block">
+                <h2 class="wiki-heading" data-i18n="wiki_h1">Apa Itu Keylogger?</h2>
+                <p class="wiki-text" data-i18n="wiki_p1">
+                    <strong>Keylogger (Keystroke Logger)</strong> adalah program atau potongan kode berbahaya yang dirancang untuk merekam, menyadap, dan mencuri setiap ketikan tombol maupun input teks yang dimasukkan pengguna pada perangkat mereka secara diam-diam tanpa sepengetahuan korban.
+                </p>
+            </div>
+
+            <div class="wiki-block">
+                <h2 class="wiki-heading" data-i18n="wiki_h2">Bagaimana Cara Kerja Keylogger di SA-MP Mobile?</h2>
+                <p class="wiki-text" data-i18n="wiki_p2">
+                    Pada ekosistem <strong>GTA SA-MP Android</strong> (seperti <strong>MonetLoader</strong> berformat <code>.lua / .luac</code> maupun <strong>CLEO Mobile</strong> berformat <code>.cs / .csa / .csi</code>), pelaku kejahatan biasanya menyamarkan keylogger di dalam mod gratis seperti mod grafik, mod senjata, mod kendaraan, atau script pembantu gameplay.
+                </p>
+                <p class="wiki-text" data-i18n="wiki_p3">
+                    Saat pemain masuk ke dalam server dan mengetikkan <strong>Password Akun</strong> atau <strong>PIN Keamanan</strong> melalui kotak dialog login maupun perintah chat (<code>/login</code>, <code>/register</code>), script keylogger akan menangkap teks tersebut beserta <em>Nickname</em> dan <em>IP Server</em>, lalu mengirimkannya secara otomatis ke server pelaku melalui <strong>Discord Webhook</strong> atau <strong>Bot Telegram</strong>.
+                </p>
+            </div>
+
+            <div class="wiki-block">
+                <h2 class="wiki-heading" data-i18n="wiki_h3">Dampak & Bahaya Bagi Pemain</h2>
+                <ul class="wiki-list">
+                    <li data-i18n="wiki_li1"><strong>Pencurian Akun Permanen:</strong> Pelaku dapat langsung masuk ke akun karakter Anda, mengganti password, dan menguras seluruh harta, kendaraan, maupun properti di dalam game.</li>
+                    <li data-i18n="wiki_li2"><strong>Penyalahgunaan Karakter (Banned):</strong> Akun yang dicuri sering dipakai untuk melakukan pelanggaran berat (cheat/RTM) sehingga akun asli Anda terkena sanksi <em>Banned Permanen</em> oleh admin server.</li>
+                    <li data-i18n="wiki_li3"><strong>Kebocoran Password Utama:</strong> Jika Anda menggunakan password yang sama untuk akun SAMP dan email/media sosial, pelaku berpotensi meretas akun pribadi Anda lainnya.</li>
+                </ul>
+            </div>
+
+            <div class="wiki-block wiki-safe-box">
+                <h2 class="wiki-heading" data-i18n="wiki_h4">Tips Mencegah Terkena Keylogger</h2>
+                <p class="wiki-text" data-i18n="wiki_p4">
+                    Selalu periksa setiap file <code>.lua</code>, <code>.luac</code>, <code>.cs</code>, <code>.csa</code>, dan <code>.csi</code> menggunakan fitur <strong>Check File Samp</strong> sebelum memasangnya ke folder game, hindari mengunduh mod dari sumber tidak jelas, serta gunakan password yang unik untuk setiap server SA-MP.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==========================================
+         HALAMAN 5: SUPPORT DEVLOPER
+    =========================================== -->
+    <main id="pageSupport" class="container hidden">
+        <header class="page-header">
+            <h1 class="main-title" data-i18n="sup_page_title">SUPPORT DEVLOPER</h1>
+            <p class="sub-title" data-i18n="sup_page_sub">Dukung Pengembangan Tools SAMP Security</p>
+        </header>
+
+        <section class="support-card">
+            <div class="dev-avatar">
+                <span>ELZ</span>
+                <div class="dev-verified">✓</div>
+            </div>
+            
+            <h2 class="dev-name">Elz</h2>
+            <span class="dev-role" data-i18n="sup_role">Creator & Security Tool Developer</span>
+            
+            <p class="dev-bio" data-i18n="sup_bio">
+                Terima kasih telah menggunakan <strong>KEYLOGGER CHECKING</strong>. Tools ini dibuat gratis untuk membantu komunitas pemain SA-MP Mobile terhindar dari pencurian akun. Dukungan Anda sangat berarti untuk biaya riset signature keylogger baru dan pemeliharaan sistem.
+            </p>
+
+            <div class="saweria-box">
+                <span class="saweria-label" data-i18n="sup_link_label">OFFICIAL DONATION LINK</span>
+                <div class="saweria-link-row">
+                    <span class="saweria-url">Saweria.co/Elz99</span>
+                    <button type="button" id="copySaweriaBtn" class="btn-copy" data-i18n="btn_copy">SALIN</button>
+                </div>
+                <a href="https://saweria.co/Elz99" target="_blank" rel="noopener noreferrer" class="btn-saweria">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                        <polyline points="15 3 21 3 21 9"/>
+                        <line x1="10" y1="14" x2="21" y2="3"/>
+                    </svg>
+                    <span data-i18n="sup_btn_saweria">DUKUNG VIA SAWERIA.CO/ELZ99</span>
+                </a>
+            </div>
+
+            <div class="perks-grid">
+                <div class="perk-item">
+                    <span class="perk-icon">⚡</span>
+                    <div>
+                        <h4 data-i18n="perk1_title">Update Signature Rutin</h4>
+                        <p data-i18n="perk1_desc">Penambahan pola deteksi metode obfuscation dan webhook stealer terbaru.</p>
+                    </div>
+                </div>
+                <div class="perk-item">
+                    <span class="perk-icon">🛡️</span>
+                    <div>
+                        <h4 data-i18n="perk2_title">100% Gratis Tanpa Iklan Mengganggu</h4>
+                        <p data-i18n="perk2_desc">Akses penuh untuk seluruh pemain SAMP Android tanpa batasan jumlah scan.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==========================================
+         HALAMAN 6: HALAMAN RAHASIA (VISITOR COUNTER)
+    =========================================== -->
+    <main id="pageSecret" class="container secret-container hidden">
+        <div class="secret-view-box">
+            <div class="secret-eye-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                    <circle cx="12" cy="12" r="3.5" fill="#ffffff" stroke="#07080a" stroke-width="1.5"/>
+                </svg>
+            </div>
+            <span class="secret-colon">:</span>
+            <span id="secretTotalViews" class="secret-count">0</span>
+        </div>
+    </main>
+
+    <!-- ==========================================
+         POP-UP PASSWORD RAHASIA
+    =========================================== -->
+    <div id="secretPasswordModal" class="modal-overlay hidden">
+        <div class="secret-modal-box">
+            <button type="button" id="closeSecretModalBtn" class="modal-close-x" title="Close">X</button>
+            <div class="secret-lock-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                </svg>
+            </div>
+            <h2 class="secret-modal-title" data-i18n="secret_modal_title">MASUKAN PASSWORD</h2>
+            <input type="password" id="secretPasswordInput" class="secret-input" placeholder="•••••••••••" autocomplete="off">
+            <p id="secretErrorMsg" class="secret-error hidden" data-i18n="secret_wrong_pass">Password salah!</p>
+            <button type="button" id="submitSecretPassBtn" class="btn-primary secret-submit-btn" data-i18n="secret_btn_unlock">BUKA AKSES</button>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         POP-UP PETUNJUK INSTALL APLIKASI PINTASAN
+    =========================================== -->
+    <div id="installGuideModal" class="modal-overlay hidden">
+        <div class="secret-modal-box">
+            <button type="button" id="closeInstallModalBtn" class="modal-close-x" title="Close">X</button>
+            <div class="install-modal-icon">
+                <img src="ikon.png" alt="Ikon Aplikasi" onerror="this.style.display='none';">
+            </div>
+            <h2 class="secret-modal-title" data-i18n="install_modal_title">PASANG KE LAYAR PONSEL</h2>
+            <p class="install-modal-desc" data-i18n="install_modal_desc">
+                Tekan ikon <strong>titik tiga (⋮)</strong> di pojok kanan atas browser Chrome Anda, lalu pilih menu <strong>"Tambahkan ke layar utama"</strong> atau <strong>"Install aplikasi"</strong> untuk memasang pintasan <strong>KEYLOGGER CHECKING</strong> dengan ikon <code>ikon.png</code>.
+            </p>
+            <button type="button" id="okInstallModalBtn" class="btn-primary secret-submit-btn" data-i18n="install_btn_ok">MENGERTI</button>
+        </div>
+    </div>
+
+    <footer class="app-footer">
+        <p>KEYLOGGER CHECKING • SAMP Mobile Security Suite • By Elz</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

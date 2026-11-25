@@ -1,0 +1,24 @@
+{
+  "name": "KEYLOGGER CHECKING - By Elz",
+  "short_name": "Keylogger Check",
+  "description": "Sistem pemindai forensik statis & bytecode untuk mengecek keamanan script SA-MP Mobile.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#07080a",
+  "theme_color": "#07080a",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "ikon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "ikon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
